@@ -3,7 +3,13 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 5s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-logo2 {
+  animation: App-logo-spin-reverse infinite 5s linear;
   height: 40vmin;
   pointer-events: none;
 }
@@ -27,7 +33,18 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes App-logo-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
   }
 }
