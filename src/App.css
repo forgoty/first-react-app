@@ -4,33 +4,9 @@
   display: grid;
   grid-template-areas:
     "h h"
-    "n c";
+    "n p";
   grid-template-rows: 60ps 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 5px;
 }
 
-.nav {
-  grid-area: n;
-  background-color: green;
-}
-
-.header {
-  grid-area: h;
-  background-color: brown;
-}
-
-.header img {
-  width: 60px;
-  background-color: brown;
-}
-
-.content {
-  grid-area: c;
-  background-color: cornflowerblue;
-}
-
-.content img {
-  width: 1000px;
-  height: 250px;
-}
