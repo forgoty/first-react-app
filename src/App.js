@@ -1,21 +1,24 @@
-import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import React from 'react'
+import {
+  BrowserRouter,
+  Route
+} from 'react-router-dom'
 import './App.css';
-import * as components from './components';
+import * as components from './components'
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <components.Header />
         <components.Navbar />
         <div className="app-wrapper-content">
-          <Route path="/profile" component={components.Profile} />
-          <Route path="/dialogs"component={components.Dialogs} />
+          <Route path="/profile" render={ () => <components.Profile profilePage={props.state.profilePage}/>} />
+          <Route path="/dialogs" render={ () => <components.Dialogs messagesPage={props.state.dialogsPage}/>} />
         </div>
       </div>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
