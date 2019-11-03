@@ -1,3 +1,6 @@
+let rerenderEntireTree = () => {
+}
+
 let dialogsData = [{
     id: 1,
     name: 'Nikita'
@@ -64,9 +67,10 @@ let postsData = [{
   },
 ]
 
-let state = {
+export let state = {
     profilePage: {
         posts: postsData,
+        newPostText: 'new post text'
     },
     dialogsPage: {
         dialogs: dialogsData,
@@ -74,13 +78,23 @@ let state = {
     },
 }
 
-export let addPost = (postMessage) => {
+window.state = state
+
+export const addPost = (postMessage) => {
     let newPost = {
         id: 6,
         name: postMessage,
         likesCount: 0
     }
     state.profilePage.posts.push(newPost)
+    rerenderEntireTree()
 }
 
-export default state
+export const updatePostText = (newText) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree()
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer
+}
