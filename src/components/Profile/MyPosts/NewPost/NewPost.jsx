@@ -2,19 +2,25 @@ import React from 'react';
 import classes from './NewPost.module.css'
 
 const NewPost = (props) => {
-  let newPostElement = React.createRef()
+  const newPostElement = React.createRef()
 
-  let addPost = () => {
-    let text = newPostElement.current.value
-    props.addPost(text)
+  const addPost = () => {
+    const text = newPostElement.current.value
+    props.dispatch({
+      type: 'ADD-POST',
+      postMessage: text,
+    })
   }
 
-  let onPostChange = () => {
-    let text = newPostElement.current.value
-    props.updatePostText(text)
+  const onPostChange = () => {
+    const text = newPostElement.current.value
+    props.dispatch({
+      type: 'UPDATE-POST-TEXT',
+      newText: text,
+    })
   }
   return (
-      <div className={classes.postsBlock}>
+    <div className={classes.postsBlock}>
         New Post
         <div>
           <div>
@@ -28,4 +34,4 @@ const NewPost = (props) => {
   )
 }
 
-export default NewPost;
+export default NewPost

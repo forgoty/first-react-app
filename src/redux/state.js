@@ -73,22 +73,24 @@ const store = {
     return this._state
   },
   rerenderEntireTree() {},
-  addPost(postMessage) {
-    const newPost = {
-      id: 6,
-      name: postMessage,
-      likesCount: 0,
-    }
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = ''
-    this.rerenderEntireTree()
-  },
-  updatePostText(newText) {
-    this._state.profilePage.newPostText = newText
-    this.rerenderEntireTree()
-  },
   subscribe(observer) {
     this.rerenderEntireTree = observer
+  },
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      const newPost = {
+        id: 6,
+        name: action.postMessage,
+        likesCount: 0,
+      }
+      this._state.profilePage.posts.push(newPost)
+      this._state.profilePage.newPostText = ''
+      this.rerenderEntireTree()
+    }
+    if (action.type === 'UPDATE-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText
+      this.rerenderEntireTree()
+    }
   },
 }
 
